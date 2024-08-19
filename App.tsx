@@ -27,9 +27,10 @@ function PopoverExample() {
       onOpen={handleOpen}
       placement="bottom"
       size="md"
+      offset={10}
       trigger={(triggerProps) => {
         return (
-          <Button {...triggerProps}>
+          <Button {...triggerProps} className="mt-16">
             <ButtonText>Open Popover</ButtonText>
           </Button>
         );
@@ -39,10 +40,7 @@ function PopoverExample() {
       <PopoverContent>
         <PopoverArrow />
         <PopoverBody>
-          <Text className="text-typography-900">
-            Alex, Annie and many others are already enjoying the Pro features,
-            don't miss out on the fun!
-          </Text>
+          <Text className="text-typography-900">hello world</Text>
         </PopoverBody>
       </PopoverContent>
     </Popover>
