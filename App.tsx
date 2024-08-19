@@ -1,22 +1,60 @@
-import { StatusBar } from 'expo-status-bar';
+import React, { useState } from "react";
 import "@/global.css";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaView } from "react-native";
+import { Button, ButtonText } from "./components/ui/button";
+import { Text } from "./components/ui/text";
+import {
+  Popover,
+  PopoverBackdrop,
+  PopoverContent,
+  PopoverArrow,
+  PopoverBody,
+} from "./components/ui/popover";
 
-export default function App() {
+function PopoverExample() {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleOpen = () => {
+    setIsOpen(true);
+  };
+  const handleClose = () => {
+    setIsOpen(false);
+  };
   return (
-    <GluestackUIProvider mode="light"><View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </View></GluestackUIProvider>
+    <Popover
+      isOpen={isOpen}
+      onClose={handleClose}
+      onOpen={handleOpen}
+      placement="bottom"
+      size="md"
+      trigger={(triggerProps) => {
+        return (
+          <Button {...triggerProps}>
+            <ButtonText>Open Popover</ButtonText>
+          </Button>
+        );
+      }}
+    >
+      <PopoverBackdrop />
+      <PopoverContent>
+        <PopoverArrow />
+        <PopoverBody>
+          <Text className="text-typography-900">
+            Alex, Annie and many others are already enjoying the Pro features,
+            don't miss out on the fun!
+          </Text>
+        </PopoverBody>
+      </PopoverContent>
+    </Popover>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default function App() {
+  return (
+    <GluestackUIProvider>
+      <SafeAreaView style={{ flex: 1 }}>
+        <PopoverExample />
+      </SafeAreaView>
+    </GluestackUIProvider>
+  );
+}

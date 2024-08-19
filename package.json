@@ -10,9 +10,12 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
+    "@gluestack-ui/button": "^1.0.7",
     "@gluestack-ui/nativewind-utils": "^1.0.23",
     "@gluestack-ui/overlay": "^0.1.15",
+    "@gluestack-ui/popover": "^0.1.37",
     "@gluestack-ui/toast": "^1.0.7",
+    "@legendapp/motion": "^2.4.0",
     "babel-plugin-module-resolver": "^5.0.2",
     "expo": "~51.0.28",
     "expo-status-bar": "~1.12.1",
